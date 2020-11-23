@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "928597741128",
+    "firebase_url": "https://contact-trace-covid-19.firebaseio.com",
+    "project_id": "contact-trace-covid-19",
+    "storage_bucket": "contact-trace-covid-19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928597741128:android:0675e5da8106613f44d27d",
+        "android_client_info": {
+          "package_name": "com.example.contact_tracing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928597741128-ngoa6u3q9ik9qfgquntlefmibfnhr2if.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.contact_tracing",
+            "certificate_hash": "4ccc9bfa6954c3e8c10b3bc726c6966eaff1ee8f"
+          }
+        },
+        {
+          "client_id": "928597741128-fuougcv25i728vuunuuv2v47m9a1nfqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhB7RS1pw_KhOv71ypeINSBfeQSi1EHDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928597741128-fuougcv25i728vuunuuv2v47m9a1nfqd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
