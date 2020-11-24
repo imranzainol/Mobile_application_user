@@ -6,6 +6,7 @@ import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:contact_tracing/HomePage.dart';
+import 'contact.dart';
 import 'historyUser.dart';
 import 'scan.dart';
 
@@ -102,6 +103,11 @@ class _GeneratePageState extends State<GeneratePage> {
             ListTile(
               title: Text("Contact Us"),
               leading: Icon(Icons.email),
+              onTap: () {
+                final user1 = _auth.currentUser;
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (BuildContext context) => ContactDev()));
+              },
             ),
           ],
         ),

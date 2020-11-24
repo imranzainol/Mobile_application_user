@@ -217,13 +217,6 @@ Future getList() async {
           },
         ),
       ),
-
-
-
-
-
-
-
     );
   }
 }

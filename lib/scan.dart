@@ -4,6 +4,7 @@ import 'package:contact_tracing/HomePage.dart';
 import 'package:contact_tracing/search.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'contact.dart';
 import 'createGroup.dart';
 import 'database/dbFuture.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -147,7 +148,7 @@ class _ScanPageState extends State<ScanPage> {
               onTap: () {
                 final user1 = _auth.currentUser;
                 Navigator.pushReplacement(context, MaterialPageRoute(
-                    builder: (BuildContext context) => CloudFirestoreSearch()));
+                    builder: (BuildContext context) => ContactDev()));
               },
             ),
           ],

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'HomePage.dart';
+import 'contact.dart';
 import 'createGroup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
@@ -117,6 +118,11 @@ class _historyUserState extends State<historyUser> {
             ListTile(
               title: Text("Contact Us"),
               leading: Icon(Icons.email),
+              onTap: () {
+                final user1 = _auth.currentUser;
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (BuildContext context) => ContactDev()));
+              },
             ),
           ],
         ),

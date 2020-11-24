@@ -2,6 +2,7 @@ import 'package:contact_tracing/scan.dart';
 import 'package:contact_tracing/widgets/Container.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'contact.dart';
 import 'database/groupdatabase.dart';
 import 'generate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -104,6 +105,11 @@ class _CreateGroupState extends State<CreateGroup> {
             ListTile(
               title: Text("Contact Us"),
               leading: Icon(Icons.email),
+              onTap: () {
+                final user1 = _auth.currentUser;
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (BuildContext context) => ContactDev()));
+              },
             ),
           ],
         ),

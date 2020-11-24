@@ -8,7 +8,6 @@ import 'historyUser.dart';
 import 'scan.dart';
 import 'generate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 // ignore: must_be_immutable
 class ContactDev extends StatefulWidget {
   @override
@@ -20,7 +19,6 @@ class _ContactDevState extends State<ContactDev> {
   String displayName = "";
 
   FirebaseAuth _auth = FirebaseAuth.instance;
-
   @override
   void initState() {
     getData();
