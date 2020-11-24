@@ -86,6 +86,7 @@ class _GeneratePageState extends State<GeneratePage> {
               title: Text("Meet Up",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue),
               ),
               leading: Icon(FontAwesomeIcons.qrcode,color: Colors.blue),
+              trailing: Image(image: AssetImage("image/new.gif"),),
             ),
 
             ListTile(

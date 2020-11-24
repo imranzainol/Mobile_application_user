@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:contact_tracing/HomePage.dart';
-import 'package:contact_tracing/search.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'contact.dart';
@@ -123,6 +122,7 @@ class _ScanPageState extends State<ScanPage> {
             ListTile(
               title: Text("Meet Up"),
               leading: Icon(FontAwesomeIcons.qrcode),
+              trailing: Image(image: AssetImage("image/new.gif"),),
               onTap: () {
                 final user1 = _auth.currentUser;
                 Navigator.pushReplacement(context, MaterialPageRoute(

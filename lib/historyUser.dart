@@ -74,6 +74,7 @@ class _historyUserState extends State<historyUser> {
                 ],
               ),
             ),
+
             ListTile(
               title: Text("Home"),
               leading: Icon(Icons.home),
@@ -99,6 +100,7 @@ class _historyUserState extends State<historyUser> {
             ListTile(
               title: Text("Meet Up"),
               leading: Icon(FontAwesomeIcons.qrcode),
+              trailing: Image(image: AssetImage("image/new.gif"),),
               onTap: () {
                 final user1 = _auth.currentUser;
                 Navigator.pushReplacement(context, MaterialPageRoute(
@@ -111,7 +113,6 @@ class _historyUserState extends State<historyUser> {
               ),
               leading: Icon(FontAwesomeIcons.book,color: Colors.blue),
             ),
-
 
             Divider(),
 

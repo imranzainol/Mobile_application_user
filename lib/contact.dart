@@ -90,6 +90,7 @@ class _ContactDevState extends State<ContactDev> {
             ListTile(
               title: Text("Meet Up"),
               leading: Icon(FontAwesomeIcons.qrcode),
+              trailing: Image(image: AssetImage("image/new.gif"),),
               onTap: () {
                 final user1 = _auth.currentUser;
                 Navigator.pushReplacement(context, MaterialPageRoute(

@@ -115,6 +115,7 @@ Future getList() async {
             ListTile(
               title: Text("Meet Up"),
               leading: Icon(FontAwesomeIcons.qrcode),
+              trailing: Image(image: AssetImage("image/new.gif"),),
               onTap: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                     builder: (BuildContext context) => CreateGroup()));
@@ -145,77 +146,147 @@ Future getList() async {
         ),
       ),
 
-      body: Container(
-        child: FutureBuilder(
-          future: getList(),
-          // ignore: missing_return
-          builder: (context, snapshot) {
-            print("-----------------------------------------");
-            print(riskData);
-            Icon(Icons.person,color:Colors.indigo,size:250,);
-            Text(
-              "User Status",
-              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            );
-            SizedBox(
-              height: 20.0,
-            );
-            if (riskData == 0){
-            return Center(
-              child: 
-            Text(
-            "No Risk",
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: Colors.green),
-            textAlign: TextAlign.center,
+      body: new Builder(
+          builder: (BuildContext context) {
+        return Column(
+            children: <Widget>[
+
+              Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: EdgeInsets.all(32),
+                  child: Column(
+                    children: [
+                      Text(
+                        "*This Application will alert you if has contact with person that contact close every level. Please alert notification from this application, it may save many life.",
+                        style: TextStyle(fontSize: 16.0,),
+                        textAlign: TextAlign.left,
+                      )
+
+                    ],
+                  ),
+                ),
               ),
-            );
-            }
-            else if (riskData == 1){
-            return Center(
-              child: 
-              
-            Text(
-            "Low Risk",
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: Colors.yellow),
-            textAlign: TextAlign.center,
+
+              Expanded(
+                flex: 6,
+                child: Padding(
+                  padding: EdgeInsets.all(0),
+                  child: Column(
+                    children: [
+                      Icon(Icons.person,color:Colors.indigo,size:300,)
+                    ],
+                  ),
+                ),
               ),
-            );
-            }
-            else if (riskData == 2){
-            return Center(
-              child: 
-              
-            Text(
-            "Medium Risk",
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: Colors.orange),
-            textAlign: TextAlign.center,
+
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.all(0),
+                  child: Column(
+                    children: [
+                      Text(
+                        "User Status",
+                        style: TextStyle(fontSize: 27.0, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      )
+
+                    ],
+                  ),
+                ),
               ),
-            );
-            }
-            else if (riskData == 3){
-            return Center(
-              child: 
-              
-            Text(
-            "High Risk",
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: Colors.red),
-            textAlign: TextAlign.center,
+
+
+              Expanded(
+                flex: 1,
+
+                child: FutureBuilder(
+                  future: getList(),
+                  // ignore: missing_return
+                  builder: (context, snapshot) {
+
+                    print(riskData);
+
+                    if (riskData == 0){
+                    return Center(
+                      child:
+                      Text(
+                    "No Risk",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.green),
+                    textAlign: TextAlign.center,
+                      ),
+                    );
+                    }
+                    else if (riskData == 1){
+                    return Center(
+                      child:
+
+                      Text(
+                    "Low Risk",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.yellow),
+                    textAlign: TextAlign.center,
+                      ),
+                    );
+                    }
+                    else if (riskData == 2){
+                    return Center(
+                      child:
+
+                      Text(
+                    "Medium Risk",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.orange),
+                    textAlign: TextAlign.center,
+                      ),
+                    );
+                    }
+                    else if (riskData == 3){
+                    return Center(
+                      child:
+
+                      Text(
+                    "High Risk",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.red),
+                    textAlign: TextAlign.center,
+                      ),
+                    );
+                    }
+                    else if (riskData == 4){
+                    return Center(
+                      child:
+                      Text(
+                    "Infected",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.black),
+                    textAlign: TextAlign.center,
+                      ),
+                    );
+                    }
+                    else {
+                      return Center(
+                          child: Body()
+                      );
+                    }
+                  },
+                ),
               ),
-            );
-            }
-            else if (riskData == 4){
-            return Center(
-              child: 
-              Text(
-            "Infected",
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold,color: Colors.black),
-            textAlign: TextAlign.center,
+
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.all(32),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                      height: 30.0,
+                      )
+                    ],
+                  ),
+                ),
               ),
+
+            ],
             );
-            }
-          },
-        ),
+        }
       ),
     );
   }
