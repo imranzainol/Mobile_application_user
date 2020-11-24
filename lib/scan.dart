@@ -62,13 +62,13 @@ class _ScanPageState extends State<ScanPage> {
       );
     }
   }
-  void _userHistory(BuildContext context, String groupName) async {
+  void _userHistory(BuildContext context, String groupName,String groupId) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     String userUid = auth.currentUser.uid.toString();
     var doc_ref = await FirebaseFirestore.instance.collection("Users")
         .where("userUid",isEqualTo:userUid).get();
     doc_ref.docs.forEach((result) {
-    History().userHistory(result.id, groupName);
+    History().userHistory(result.id, groupName,groupId);
     });
   }
 
@@ -187,7 +187,7 @@ class _ScanPageState extends State<ScanPage> {
                 setState(() {
                   qrCodeResult = "Check in"+" "+groupName;
                   _joinGroup(context, codeScanner);
-                  _userHistory(context, groupName);
+                  _userHistory(context, groupName, codeScanner);
                 });
               },
               child: Text(
@@ -204,5 +204,4 @@ class _ScanPageState extends State<ScanPage> {
       ),
     );
   }
-
 }

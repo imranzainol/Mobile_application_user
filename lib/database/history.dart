@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class History {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<String> userHistory(String userUid, String groupName) async {
+  Future<String> userHistory(String userUid, String groupName,String groupId) async {
     List<Map> history = List();
     var historydetail = new Map();
     historydetail["groupName"]=groupName;
@@ -11,7 +11,15 @@ class History {
       history.add(historydetail);
       await _firestore.collection("Users").doc(userUid).update({
         'history': FieldValue.arrayUnion(history),
-
       });
+
+    List<Map> premise = List();
+    var premiseCheckIn = new Map();
+    premiseCheckIn["groupId"]=groupId;
+    premiseCheckIn["time"]=DateTime.now().millisecondsSinceEpoch;
+    premise.add(premiseCheckIn);
+    await _firestore.collection("Users").doc(userUid).update({
+      'CheckIn': FieldValue.arrayUnion(premise),
+    });
   }
 }

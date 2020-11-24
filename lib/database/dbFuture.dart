@@ -13,6 +13,8 @@ class DBFuture {
       await _firestore.collection("groups").doc(groupId).update({
         'members': FieldValue.arrayUnion(members),
       });
+
+
       retVal = "success";
     return retVal;
   }

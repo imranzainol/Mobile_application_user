@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
-
+FirebaseMessaging fm = FirebaseMessaging();
 List<String> history = List();
+List<String> CheckIn = List();
 int riskLevel=0;
+
 
 Future<void> userSetup(String fullName,String email,String phoneNo)async{
   List<String> indexList = [];
@@ -18,6 +21,12 @@ Future<void> userSetup(String fullName,String email,String phoneNo)async{
   FirebaseAuth auth = FirebaseAuth.instance;
   String userUid = auth.currentUser.uid.toString();
 
-  users.add({'fullName':fullName,'email':email,'userUid':userUid,'history':history,'riskLevel':riskLevel,'phoneNo':phoneNo,'searchKeywords':indexList});
+  fm.getToken().then((value) {
+    var data = value;
+    print('-----------------------------------------');
+    print('token:$data');
+    users.add({'notifToken':data,'fullName':fullName,'email':email,'userUid':userUid,'history':history,
+      'riskLevel':riskLevel,'CheckIn':CheckIn,'phoneNo':phoneNo,'searchKeywords':indexList});
+  });
   return;
 }

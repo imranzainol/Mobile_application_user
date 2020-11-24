@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:contact_tracing/scan.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'LogInUser.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  FirebaseMessaging fm = FirebaseMessaging();
   
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String displayName = "";
@@ -27,14 +29,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+
     getData();
+    fm.configure();
   }
 
   getData() async {
+
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       displayName = prefs.getString('displayName');
     });
+
   }
 
 Future getList() async {
@@ -158,7 +165,7 @@ Future getList() async {
                   child: Column(
                     children: [
                       Text(
-                        "*This Application will alert you if has contact with person that contact close every level. Please alert notification from this application, it may save many life.",
+                        "*This Application will alert you if has contact with person that contact close in every level. Please alert notification from this application, it may save many life.",
                         style: TextStyle(fontSize: 16.0,),
                         textAlign: TextAlign.left,
                       )
@@ -272,17 +279,76 @@ Future getList() async {
 
               Expanded(
                 flex: 2,
-                child: Padding(
-                  padding: EdgeInsets.all(32),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                      height: 30.0,
-                      )
-                    ],
-                  ),
+
+                child: FutureBuilder(
+                  future: getList(),
+                  // ignore: missing_return
+                  builder: (context, snapshot) {
+
+                    print(riskData);
+
+                    if (riskData == 0){
+                      return Center(
+                        child:
+                        Text(
+                          "You has no risk, Please wear mask when go out.",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.black),
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    }
+                    else if (riskData == 1){
+                      return Center(
+                        child:
+
+                        Text(
+                          "You is the third layer contact tracing. Please quarantine 14 days.",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.black),
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    }
+                    else if (riskData == 2){
+                      return Center(
+                        child:
+
+                        Text(
+                          "You may contact to 2nd level of COVID-19 suspects, perform swab test",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.black),
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    }
+                    else if (riskData == 3){
+                      return Center(
+                        child:
+
+                        Text(
+                          "You high possible may contact COVID-19 patient. Go near Hospital for COVID-19 test",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.black),
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    }
+                    else if (riskData == 4){
+                      return Center(
+                        child:
+                        Text(
+                          "You has infected",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.black),
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    }
+                    else {
+                      return Center(
+                          child: Body()
+                      );
+                    }
+                  },
                 ),
               ),
+
 
             ],
             );
