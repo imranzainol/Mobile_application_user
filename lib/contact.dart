@@ -48,12 +48,6 @@ class _ContactDevState extends State<ContactDev> {
         backgroundColor: Color(0xFF039BE5),
         title: Text("Contact"),
         actions: <Widget>[
-          FlatButton.icon(
-              onPressed: (){
-                logOut();
-              },
-              icon: Icon(Icons.person,color:Color(0xffffffff),),
-              label: Text("Log Out",style: TextStyle(color: Colors.white)))
         ],
       ),
       drawer: Drawer(
