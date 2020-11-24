@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'LogInUser.dart';
+import 'contact.dart';
 import 'createGroup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'historyUser.dart';
@@ -134,6 +135,11 @@ Future getList() async {
             ListTile(
               title: Text("Contact Us"),
               leading: Icon(Icons.email),
+              onTap: () {
+                final user1 = _auth.currentUser;
+                Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (BuildContext context) => ContactDev()));
+              },
             ),
           ],
         ),
