@@ -6,7 +6,6 @@ import 'LogInUser.dart';
 import 'createGroup.dart';
 import 'historyUser.dart';
 import 'scan.dart';
-import 'generate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // ignore: must_be_immutable
 class ContactDev extends StatefulWidget {

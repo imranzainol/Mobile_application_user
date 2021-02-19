@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class History {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  // ignore: missing_return
   Future<String> userHistory(String userUid, String groupName,String groupId) async {
     List<Map> history = List();
     var historydetail = new Map();

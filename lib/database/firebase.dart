@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 FirebaseMessaging fm = FirebaseMessaging();
 List<String> history = List();
+// ignore: non_constant_identifier_names
 List<String> CheckIn = List();
 int riskLevel=0;
 
